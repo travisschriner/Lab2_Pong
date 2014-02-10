@@ -66,12 +66,12 @@ begin
 			end if;
 			
 			--top F strut
-			if(row > 140 and column > 399 and row <130 and column <430) then
+			if(row > 140 and column > 399 and row <170 and column <470) then
 				b <= (others => '1');
 			end if;
 			
 			--bottom F strut
-			if(row > 240 and column > 399 and row <270 and column <430) then
+			if(row > 240 and column > 399 and row <270 and column <470) then
 				b <= (others => '1');
 			end if;
 			
