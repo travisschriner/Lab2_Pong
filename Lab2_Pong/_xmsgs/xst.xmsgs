@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\C15Travis.Schriner\Documents\2dig\ECE383\Lab2_Pong\Lab2_Pong\atlys_lab_video.vhd</arg>&quot; line <arg fmt="%s" index="2">63</arg>: Output port &lt;<arg fmt="%s" index="3">v_completed</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">vga_sync_instance</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">h_blank</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="737" delta="new" >Found <arg fmt="%d" index="1">1</arg>-bit latch for signal &lt;<arg fmt="%s" index="2">r&lt;5&gt;</arg>&gt;. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+</msg>
+
+<msg type="warning" file="Xst" num="737" delta="new" >Found <arg fmt="%d" index="1">1</arg>-bit latch for signal &lt;<arg fmt="%s" index="2">g&lt;7&gt;</arg>&gt;. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+</msg>
+
+<msg type="warning" file="Xst" num="737" delta="new" >Found <arg fmt="%d" index="1">1</arg>-bit latch for signal &lt;<arg fmt="%s" index="2">b&lt;7&gt;</arg>&gt;. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">inst_DCM_pixel</arg> in unit <arg fmt="%s" index="2">atlys_lab_video</arg> of type <arg fmt="%s" index="3">DCM</arg> has been replaced by <arg fmt="%s" index="4">DCM_SP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">inst_DCM_serialize</arg> in unit <arg fmt="%s" index="2">atlys_lab_video</arg> of type <arg fmt="%s" index="3">DCM</arg> has been replaced by <arg fmt="%s" index="4">DCM_SP</arg>
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">vga_sync_instance/h_sync_instance/column_reg_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">vga_sync_instance/h_sync_instance/column_reg_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">vga_sync_instance/v_sync_instance/completed_reg</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/latched_green_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/latched_green_4&gt; &lt;inst_dvid/latched_green_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/latched_green_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/latched_green_5&gt; &lt;inst_dvid/latched_green_3&gt; &lt;inst_dvid/latched_green_1&gt; &lt;inst_dvid/latched_green_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/latched_blue_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/latched_blue_4&gt; &lt;inst_dvid/latched_blue_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/latched_blue_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/latched_blue_5&gt; &lt;inst_dvid/latched_blue_3&gt; &lt;inst_dvid/latched_blue_1&gt; &lt;inst_dvid/latched_blue_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/TDMS_encoder_red/encoded_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/TDMS_encoder_red/encoded_4&gt; &lt;inst_dvid/TDMS_encoder_red/encoded_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/TDMS_encoder_red/encoded_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/TDMS_encoder_red/encoded_5&gt; &lt;inst_dvid/TDMS_encoder_red/encoded_3&gt; &lt;inst_dvid/TDMS_encoder_red/encoded_1&gt; &lt;inst_dvid/TDMS_encoder_red/encoded_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/TDMS_encoder_green/encoded_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/TDMS_encoder_green/encoded_4&gt; &lt;inst_dvid/TDMS_encoder_green/encoded_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/TDMS_encoder_green/encoded_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/TDMS_encoder_green/encoded_5&gt; &lt;inst_dvid/TDMS_encoder_green/encoded_3&gt; &lt;inst_dvid/TDMS_encoder_green/encoded_1&gt; &lt;inst_dvid/TDMS_encoder_green/encoded_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/latched_red_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/latched_red_4&gt; &lt;inst_dvid/latched_red_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/latched_red_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/latched_red_5&gt; &lt;inst_dvid/latched_red_3&gt; &lt;inst_dvid/latched_red_1&gt; &lt;inst_dvid/latched_red_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/TDMS_encoder_blue/encoded_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/TDMS_encoder_blue/encoded_4&gt; &lt;inst_dvid/TDMS_encoder_blue/encoded_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">inst_dvid/TDMS_encoder_blue/encoded_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">atlys_lab_video</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">4 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;inst_dvid/TDMS_encoder_blue/encoded_5&gt; &lt;inst_dvid/TDMS_encoder_blue/encoded_3&gt; &lt;inst_dvid/TDMS_encoder_blue/encoded_1&gt; &lt;inst_dvid/TDMS_encoder_blue/encoded_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2169" delta="new" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+</msg>
+
+</messages>
+
