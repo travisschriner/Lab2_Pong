@@ -32,6 +32,19 @@ signal r_sig, g_sig, b_sig : std_logic_vector(7 downto 0);
 
 begin
 
+	
+	process(paddle_y)
+	begin
+	
+		r <= (others => '0');
+		g <= (others => '0');
+		b <= (others => '0');
+		
+		if(column > 5 and column < 25 and row > paddle_y and row < (paddle_y + 50)) then
+			r <= (others => '1');
+		end if;
+		end process;
+	
 	process(row, blank, column)
 	begin
 	
