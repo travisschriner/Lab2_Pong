@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=C:\Users\C15Travis.Schriner\Documents\2dig\ECE383\Lab2_Pong\Lab2_Pong\atlys_lab_video.ncd
-OUTFILE=C:\Users\C15Travis.Schriner\Documents\2dig\ECE383\Lab2_Pong\Lab2_Pong\atlys_lab_video.bit
-FAMILY=Spartan6
-PART=xc6slx45-3csg324
-WORKINGDIR=C:\Users\C15Travis.Schriner\Documents\2dig\ECE383\Lab2_Pong\Lab2_Pong
-LICENSE=ISE
-USER_INFO=209468342_209874070_210560905_463
