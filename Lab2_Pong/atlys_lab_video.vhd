@@ -19,6 +19,8 @@ entity atlys_lab_video is
              reset : in  std_logic;
 				 SW7   : in STD_LOGIC;
 				 SW1	 : in STD_LOGIC;
+				 BTNU	 : in STD_LOGIC;
+				 BTND	 : in STD_LOGIC;
              tmds  : out std_logic_vector(3 downto 0);
              tmdsb : out std_logic_vector(3 downto 0)
          );
@@ -84,16 +86,16 @@ begin
 							g        => green,
 					 		b        => blue
 						);
---		pong_control_instance : entity work.pong_control(behavioral)
---			port map (	clk			=> clk,
---							reset			=> reset,
---							up				=>	up,
---							down			=> down,
---							v_completed => v_completed,
---							ball_x		=> ball_x,
---							ball_y		=> ball_y,
---							paddle_y		=> paddle_y
---					);
+		pong_control_instance : entity work.pong_control(behavioral)
+			port map (	clk			=> clk,
+							reset			=> reset,
+							up				=>	BTNU,
+							down			=> BTND,
+							v_completed => v_completed,
+							ball_x		=> ball_x,
+							ball_y		=> ball_y,
+							paddle_y		=> paddle_y
+					);
 			
 			
 			

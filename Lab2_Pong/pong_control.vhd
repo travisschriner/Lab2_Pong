@@ -39,7 +39,30 @@ end pong_control;
 
 architecture Behavioral of pong_control is
 
+signal ball_x_pos, ball_y_pos, paddle_y_pos, ball_x_next, ball_y_next, paddle_y_next : unsigned (10 downto 0);
+
 begin
+
+	--state reg
+	process(clk, reset)
+	begin
+		if(reset ='1') then
+			ball_x_pos <= "00000010000";
+			ball_y_pos <= "00000010000";
+			paddle_y_pos <= (others => '0');
+		elsif( rising_edge(clk)) then
+			ball_x_pos <= ball_x_next;
+			ball_y_pos <= ball_y_next;
+			paddle_y_pos <= paddle_y_next;
+		end if;
+	end process;
+	
+	
+	
+	--output
+	ball_x 	<= ball_x_pos;
+	ball_y 	<= ball_y_pos;
+	paddle_y <= paddle_y_pos;
 
 
 end Behavioral;
