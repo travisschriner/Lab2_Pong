@@ -62,7 +62,8 @@ begin
 	--output
 	ball_x 	<= ball_x_pos;
 	ball_y 	<= ball_y_pos;
-	paddle_y <= paddle_y_pos;
+	paddle_y <= paddle_y_next;
+	
 
 
 end Behavioral;
