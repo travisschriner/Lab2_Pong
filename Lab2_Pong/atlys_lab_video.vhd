@@ -18,7 +18,6 @@ entity atlys_lab_video is
              clk   : in  std_logic; -- 100 MHz
              reset : in  std_logic;
 				 SW7   : in STD_LOGIC;
-				 SW1	 : in STD_LOGIC;
 				 BTNU	 : in STD_LOGIC;
 				 BTND	 : in STD_LOGIC;
              tmds  : out std_logic_vector(3 downto 0);
@@ -80,8 +79,6 @@ begin
 							ball_x 	=> ball_x,
 							ball_y	=>	ball_y,
 							paddle_y	=>	paddle_y,
-							SW7      => SW7,
-							SW1		=> SW1,
 							r        => red,
 							g        => green,
 					 		b        => blue
@@ -91,6 +88,7 @@ begin
 							reset			=> reset,
 							up				=>	BTNU,
 							down			=> BTND,
+							SW7      => SW7,
 							v_completed => v_completed,
 							ball_x		=> ball_x,
 							ball_y		=> ball_y,

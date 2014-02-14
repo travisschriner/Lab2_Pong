@@ -20,9 +20,7 @@ entity pixel_gen is
 			  ball_x	  : in unsigned (10 downto 0);
 			  ball_y	  : in unsigned (10 downto 0);
 			  paddle_y : in unsigned (10 downto 0);
-			  SW7		  : in STD_LOGIC;
-			  SW1      : in STD_LOGIC;
-           r,g,b    : out std_logic_vector(7 downto 0));
+			  r,g,b    : out std_logic_vector(7 downto 0));
           
 end pixel_gen;
 
@@ -35,7 +33,7 @@ begin
 	
 	
 	
-	process(row, blank, column)
+	process(row, blank, column, ball_x, ball_y, paddle_y)
 	begin
 	
 			r <= (others => '0');
@@ -44,6 +42,11 @@ begin
 			
 		if(blank = '0') then
 		
+			--ball
+			if(row > ball_y and row < ball_y +15 and column > ball_x and column < ball_x +15) then
+				g <= (others => '1');
+			end if;
+			
 			--left A col
 			if(row > 140 and column >170 and row <340 and column < 200) then
 				b <= (others => '1');
