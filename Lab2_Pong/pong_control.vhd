@@ -117,7 +117,7 @@ process(clk, reset)
 					state_next <= top_wall;
 				end if;
 				
-				if (ball_x_reg >= paddle_y_reg and ball_x_reg <= paddle_y_reg+100) then
+				if (ball_x_reg <=20 and ball_y_reg >= paddle_y_reg and ball_y_reg <= paddle_y_reg+100) then
 					if (ball_y_reg >= (paddle_y_reg + 50)
 							 and ball_y_reg <= (paddle_y_reg + 100)) then
 						state_next <= paddle_bounce_lower;
@@ -232,11 +232,11 @@ end process;
 
 
 
-process (up, down, paddle_y_reg, count)
+process (up, down, paddle_y_reg, counter_reg)
 begin
 	paddle_y_next <= paddle_y_reg;
 
-	if(count = 200 or count = 400) 
+	if(counter_reg = 200 or counter_reg = 400) then
 		if (paddle_y_next < 0) then
 			paddle_y_next <= (others => '0');
 		elsif (up ='1' and  down = '0' and paddle_y_next > 1) then
