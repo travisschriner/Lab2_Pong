@@ -50,35 +50,49 @@ begin
 			--left A col
 			if(row > 140 and column >170 and row <340 and column < 200) then
 				b <= (others => '1');
+				r <= (others => '0');
+				g <= (others => '0');
 			end if;
 			--top A strut
 			if(row > 140 and column >199 and row <170 and column <290) then
 				b <= (others => '1');
+				r <= (others => '0');
+				g <= (others => '0');
 			end if;
 			
 			--bottom A strut
 			if(row > 240 and column >199 and row <270 and column <290) then
 				b <= (others => '1');
+				r <= (others => '0');
+				g <= (others => '0');
 			end if;
 			
 			--right A col
 			if(row > 140 and column >289 and row <340 and column <320) then
 				b <= (others => '1');
+				r <= (others => '0');
+				g <= (others => '0');
 			end if;
 			
 			--left F col
 			if(row > 140 and column >370 and row <340 and column <400) then
 				b <= (others => '1');
+				r <= (others => '0');
+				g <= (others => '0');
 			end if;
 			
 			--top F strut
 			if(row > 140 and column > 399 and row <170 and column <470) then
 				b <= (others => '1');
+				r <= (others => '0');
+				g <= (others => '0');
 			end if;
 			
 			--bottom F strut
 			if(row > 240 and column > 399 and row <270 and column <470) then
 				b <= (others => '1');
+				r <= (others => '0');
+				g <= (others => '0');
 			end if;
 			
 			--paddle
