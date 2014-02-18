@@ -35,7 +35,7 @@ signal paddle_y_next, paddle_y_reg : unsigned(10 downto 0);
 signal counter_reg, counter_next : unsigned(10 downto 0);
 signal ball_x_reg, ball_x_next, ball_y_reg, ball_y_next : unsigned(10 downto 0);
 signal y_dir, x_dir, y_dir_reg, x_dir_reg, stop, stop_reg: std_logic;
-signal ball_speed : natural;
+signal speed : natural;
 begin
 
 
@@ -44,15 +44,15 @@ begin
 process (SW7, clk)
 begin
 if (SW7 = '1') then
-	ball_speed <= 500;
+	speed <= 500;
 else
-	ball_speed <= 1000;
+	speed <= 1000;
 end if;
 end process;
 
 --ball counter
-	counter_next <= counter_reg + 1 when counter_reg < to_unsigned(ball_speed, 11) and v_completed = '1' else
-					    (others => '0') when counter_reg >= to_unsigned(ball_speed, 11) else
+	counter_next <= counter_reg + 1 when counter_reg < to_unsigned(speed, 11) and v_completed = '1' else
+					    (others => '0') when counter_reg >= to_unsigned(speed, 11) else
 					    counter_reg;
 
 	process(clk, reset)
@@ -93,14 +93,14 @@ process(clk, reset)
 	end process;
 
 --next-state logic
-	process(state_next, state_reg, ball_x_reg)
+	process(state_next, state_reg, ball_x_reg, ball_y_reg, paddle_y_reg)
 	begin
 	
 	
 		state_next <= state_reg;
 		
 		
-	if (counter_reg >= ball_speed) then
+	if (counter_reg >= speed) then
 
 		case state_reg is
 			when movement =>
@@ -157,7 +157,7 @@ process(clk, reset)
 		stop <= stop_reg;
 		
 		
-	if (counter_reg >= ball_speed) then
+	if (counter_reg >= speed) then
 		case state_next is
 			when movement =>
 				if (stop_reg = '0') then
