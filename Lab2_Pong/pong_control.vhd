@@ -232,7 +232,7 @@ end process;
 
 
 
-process (up, down, paddle_y_reg, counter_reg)
+process (up, down, paddle_y_reg, counter_reg, paddle_y_next)
 begin
 	paddle_y_next <= paddle_y_reg;
 
