@@ -51,3 +51,13 @@ end process;
 ```
 
 
+Discussion
+-----------
+
+In order to implement this lab, I had to throw out my state machine and use a different one. My above state machine was constantly glitching and had a hard time dealing with the frame rate. Once my state machine was fixed, my design worked good. Creating Pong on a MCU would be much easier and probably only require about 57 lines of code. I thought I would have to fix my V pulse because it is high for an entire line instead of a single clock cycle. I worked around this by using a rising_edge construct. That saved me the hastle of dealing with my V_sync_gen code. 
+
+Conclusion
+-----------
+If you do this on an MCU, it is much simpler. The state machines are hard to deal with because they make everything so convoluted. My ball takes about 7 seconds to come on screen and I have no idea why. Once it is on screen, everything works fine. I now have a single player Pong game I can indulge myself on if I decide to buy the $600 FPGA down the road. I might because I enjoy pong, but then again I might just program it on my computer using JAVA so I can play it without having to plug 3 wires in and rewiring my TV every time I want to play. 
+
+
