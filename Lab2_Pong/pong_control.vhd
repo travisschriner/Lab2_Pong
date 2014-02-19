@@ -27,20 +27,20 @@ end pong_control;
 architecture Behavioral of pong_control is
 
 	
-type state_type is (idle, right_hit, left_hit, bottom_hit, top_hit, 
-							paddle_bounce_upper, paddle_bounce_lower);
+type state_type is (idle, right_hit, left_hit, bottom_hit, top_hit, paddle_hit_high, paddle_hit_low);
 signal state_reg, state_next : state_type;
-signal up_signal, down_signal : std_logic;
-signal paddle_y_next, paddle_y_reg : unsigned(10 downto 0);
-signal count, count_next : unsigned(10 downto 0);
-signal ball_x_reg, ball_x_next, ball_y_reg, ball_y_next : unsigned(10 downto 0);
-signal y_dir, x_dir, y_dir_reg, x_dir_reg, stop, stop_reg: std_logic;
+signal ball_x_reg, ball_x_next, ball_y_reg, ball_y_next, paddle_y_next, paddle_y_reg, count, count_next : unsigned(10 downto 0);
+signal y_dir, x_dir, y_dir_reg, x_dir_reg, stop, stop_reg, up_signal, down_signal: std_logic;
 signal speed : natural;
 begin
 
 
 
-	--speed check
+--================================================================
+--!!!!!!!!!!!!!!!!!!!!!!!REGISTERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+--================================================================
+
+	--speed switch for B functionality
 	process (SW7, clk)
 	begin
 		if (SW7 = '1') then
@@ -50,11 +50,7 @@ begin
 		end if;
 	end process;
 
---ball counter
-	count_next <= count + 1 when count < to_unsigned(speed, 11) and v_completed = '1' else
-					    (others => '0') when count >= to_unsigned(speed, 11) else
-					    count;
-
+  --ball register and logic
 	process(clk, reset)
 	begin
 		if reset = '1' then
@@ -63,23 +59,38 @@ begin
 			count <= count_next;
 		end if;
 	end process;
+	
+	count_next <= count + 1 when count < to_unsigned(speed, 11) and v_completed = '1' else
+					    (others => '0') when count >= to_unsigned(speed, 11) else
+					    count;
 
---State Register
-process(clk, reset)
-begin
-	if reset = '1' then
-		state_reg <= idle;
-	elsif rising_edge(clk) then
-		state_reg <= state_next;
-	end if;
-end process;
+	--State Register
+	process(clk, reset)
+	begin
+		if reset = '1' then
+			state_reg <= idle;
+		elsif rising_edge(clk) then
+			state_reg <= state_next;
+		end if;
+	end process;
+	
+	--paddle register
+	process(clk, reset)
+	begin
+			if (reset = '1') then
+				paddle_y_reg <= (others => '0');
+			elsif rising_edge(clk) then
+				paddle_y_reg <= paddle_y_next;
+			end if;
 
---output buffer
-process(clk, reset)
+	end process;
+
+	--output buffer
+	process(clk, reset)
 	begin
 		if (reset = '1') then
 			ball_x_reg <= "00000000010";
-			ball_y_reg <= "00000000011";
+			ball_y_reg <= "00000000001";
 			x_dir_reg <= '0';
 			y_dir_reg <= '0';
 			stop_reg	 <= '0';
@@ -92,14 +103,18 @@ process(clk, reset)
 		end if;
 	end process;
 
---next-state logic
-	process(state_next, state_reg, ball_x_reg, ball_y_reg, paddle_y_reg)
+
+
+
+--================================================================
+--!!!!!!!!!!!!!!!!!!!!!!!NEXT-STATE LOGIC!!!!!!!!!!!!!!!!!!!!!!!!!
+--================================================================
+   -- C2C Good explained how he set up his state machine because mine was all bunk.
+	process(state_next, state_reg, ball_x_reg, ball_y_reg, paddle_y_reg, count)
 	begin
-	
-	
+		
 		state_next <= state_reg;
-		
-		
+			
 	if (count >= speed) then
 
 		case state_reg is
@@ -121,34 +136,44 @@ process(clk, reset)
 				if (ball_x_reg <=20 and ball_y_reg >= paddle_y_reg and ball_y_reg <= paddle_y_reg+100) then
 					if (ball_y_reg >= (paddle_y_reg + 50)
 							 and ball_y_reg <= (paddle_y_reg + 100)) then
-						state_next <= paddle_bounce_lower;
+						state_next <= paddle_hit_low;
 					elsif (ball_y_reg >= paddle_y_reg and ball_y_reg < (paddle_y_reg + 50)) then
-						state_next <= paddle_bounce_upper;
+						state_next <= paddle_hit_high;
 					end if;
 				end if;
+				
 			when right_hit =>	
 				state_next <= idle;
+				
 			when left_hit =>
 				state_next <= idle;
+				
 			when bottom_hit =>
 				state_next <= idle;
+				
 			when top_hit =>
 				state_next <= idle;
-			when paddle_bounce_upper =>
+				
+			when paddle_hit_high =>
 				state_next <= idle;
-			when paddle_bounce_lower =>
+				
+			when paddle_hit_low =>
 				state_next <= idle;
+				
 		end case;
 
 	end if;
 
 	end process;
 
---output logic
-	process(state_next, count)
+
+
+
+--================================================================
+--!!!!!!!!!!!!!!!!!!!!!!!OUTPUT LOGIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+--================================================================
+	process(state_next, count, stop, x_dir_reg, y_dir_reg)
 	begin
-	
-	
 	
 		--initializes states
 		ball_x_next <= ball_x_reg;
@@ -175,80 +200,62 @@ process(clk, reset)
 					elsif (y_dir_reg ='1') then
 						ball_y_next <= ball_y_reg - 1;
 					end if;
+					
 				end if;
 				
 				
 			when right_hit =>
 				x_dir <= '1';
+				
 			when left_hit =>
 				stop <= '1';
+				
 			when bottom_hit =>
 				y_dir <= '1';
+				
 			when top_hit =>
 				y_dir <= '0';
-			when paddle_bounce_upper =>
+				
+			when paddle_hit_high =>
 				x_dir <= '0';
 				y_dir <= '1';
-			when paddle_bounce_lower =>
+				
+			when paddle_hit_low =>
 				x_dir <= '0';
 				y_dir <= '0';
+				
 		end case;
 	end if;
 
 	end process;
 
 
-
-
-
-
-
-
---output
-ball_x <= ball_x_reg;
-ball_y <= ball_y_reg;
-
-
-
-
-
-
-
 --================================================================
 --!!!!!!!!!!!!!!!!!!!!!!!PADDLE MOVEMENT!!!!!!!!!!!!!!!!!!!!!!!!!!
 --================================================================
 
+	--hot zones A functionality stuff
+	process (up, down, paddle_y_reg, count, paddle_y_next)
+	begin
+		paddle_y_next <= paddle_y_reg;
 
---paddle flip flop
-process(clk, reset)
-begin
-		if (reset = '1') then
-			paddle_y_reg <= (others => '0');
-		elsif rising_edge(clk) then
-			paddle_y_reg <= paddle_y_next;
-		end if;
+		if(count = 200 or count = 400) then
+			if (paddle_y_next < 0) then
+				paddle_y_next <= (others => '0');
+			elsif (up ='1' and  down = '0' and paddle_y_next > 1) then
+				paddle_y_next <= paddle_y_reg - 1;	
+			elsif (up = '0' and down = '1' and paddle_y_next < 380) then
+				paddle_y_next <= paddle_y_reg + 1;
+			end if;
+		end if;	
 
-end process;
+	end process;
 
 
+	--output
+	ball_x <= ball_x_reg;
+	ball_y <= ball_y_reg;
+	paddle_y <= paddle_y_reg;	
 
-
-process (up, down, paddle_y_reg, count, paddle_y_next)
-begin
-	paddle_y_next <= paddle_y_reg;
-
-	if(count = 200 or count = 400) then
-		if (paddle_y_next < 0) then
-			paddle_y_next <= (others => '0');
-		elsif (up ='1' and  down = '0' and paddle_y_next > 1) then
-			paddle_y_next <= paddle_y_reg - 1;	
-		elsif (up = '0' and down = '1' and paddle_y_next < 380) then
-			paddle_y_next <= paddle_y_reg + 1;
-		end if;
-	end if;	
-
-end process;
-
-paddle_y <= paddle_y_reg;	
 end Behavioral;
 
